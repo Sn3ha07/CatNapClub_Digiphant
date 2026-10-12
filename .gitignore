@@ -1,0 +1,41 @@
+# Unity generated
+/Library/
+/Temp/
+/Obj/
+/obj/
+/Logs/
+/UserSettings/
+/Build/
+/Builds/
+/MemoryCaptures/
+*.csproj
+*.sln
+*.slnx
+*.pidb
+*.userprefs
+.vs/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Python
+**/.venv/
+**/__pycache__/
+*.py[cod]
+
+# Videos stay on Drive
+/Recordings/
+/recordings/
+
+# Instructor starter: cloned separately (see DIGIPHANT_MARIO_SETUP.md); our changes live in Restore/
+/DigiPhantStarter/
+/Assets/Elephant/
+/Assets/Elephant.meta
+
+# Copyrighted Nintendo music: kept on this computer only, never committed
+/Assets/DigiPhant/Resources/Music/
+/Assets/DigiPhant/Resources/Music.meta
+
+# Reference/test photos are never shared; only the working models are committed
+**/reference_poses/
