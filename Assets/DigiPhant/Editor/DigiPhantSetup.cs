@@ -247,7 +247,37 @@ namespace DigiPhant.Editor
                 EditorUtility.SetDirty(controller);
             }
             EditorGUILayout.HelpBox("Changing group size applies the default role assignments and clears calibration.", MessageType.Info);
+            DrawMusicHelp();
             DrawDefaultInspector();
+        }
+
+        const string MusicFolder = "Assets/DigiPhant/Resources/Music";
+
+        // No music ships with the project. This box explains how to add your own; the slots are in "Add your music" below.
+        static void DrawMusicHelp()
+        {
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Add your music", EditorStyles.boldLabel);
+            EditorGUILayout.HelpBox("The game has no music until you add some. Use tracks you own or have permission to use.\n" +
+                "1. Click Open music folder and copy your MP3, WAV or OGG files into it.\n" +
+                "2. Drag each file onto its slot under Add your music below: main theme, nap, course clear, calibration.\n" +
+                "Files named MainTheme, Lullaby, CourseClear or StaffRoll in that folder are used even without dragging. " +
+                "The folder is never committed to git.", MessageType.None);
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                if (GUILayout.Button("Open music folder"))
+                {
+                    if (!AssetDatabase.IsValidFolder(MusicFolder))
+                    {
+                        AssetDatabase.CreateFolder("Assets/DigiPhant/Resources", "Music");
+                        AssetDatabase.Refresh();
+                    }
+                    EditorUtility.RevealInFinder(Path.GetFullPath(MusicFolder) + "/");
+                }
+                if (GUILayout.Button("Music setup guide"))
+                    EditorUtility.OpenWithDefaultApp(Path.GetFullPath(Path.Combine(Application.dataPath, "../DIGIPHANT_MARIO_SETUP.md")));
+            }
+            EditorGUILayout.Space();
         }
     }
 

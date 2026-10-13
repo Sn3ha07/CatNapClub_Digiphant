@@ -23,7 +23,7 @@ namespace DigiPhant
         [Min(.5f)] public float coinPickupRadius = 2.2f;
         [Tooltip("Seconds of eating or drinking needed to earn that star.")]
         [Min(0)] public float activitySecondsForStar = 1.5f;
-        [Tooltip("Background music volume. The track is Resources/Music/MainTheme; it starts with a round and loops.")]
+        [Tooltip("Background music volume. Add tracks in the DigiPhant Controller's Add your music section.")]
         [Range(0, 1)] public float musicVolume = .6f;
 
         DigiPhantController controller;
@@ -70,6 +70,10 @@ namespace DigiPhant
         // the screens by then, so rebuild them (Start only runs once).
         void OnEnable() { if (started) Setup(); }
 
+        // Music: the clip in the controller's "Add your music" slot, else a file of that name in Resources/Music.
+        // No music ships with the project, so either may be missing; then that moment is silent.
+        static AudioClip Track(AudioClip chosen, string fileName) => chosen ? chosen : Resources.Load<AudioClip>("Music/" + fileName);
+
         // Creates whatever is missing, then shows the title screen if the screens had to be built.
         void Setup()
         {
@@ -81,26 +85,26 @@ namespace DigiPhant
             if (!music)
             {
                 music = gameObject.AddComponent<AudioSource>();
-                music.clip = Resources.Load<AudioClip>("Music/MainTheme");
+                music.clip = Track(controller ? controller.mainTheme : null, "MainTheme");
                 music.loop = true; // start again from the beginning when the track ends
                 music.playOnAwake = false; music.spatialBlend = 0; music.volume = musicVolume;
             }
             if (!lullaby)
             {
                 lullaby = gameObject.AddComponent<AudioSource>();
-                lullaby.clip = Resources.Load<AudioClip>("Music/Lullaby"); // plays only while the elephant naps
+                lullaby.clip = Track(controller ? controller.napMusic : null, "Lullaby"); // plays only while the elephant naps
                 lullaby.loop = true; lullaby.playOnAwake = false; lullaby.spatialBlend = 0; lullaby.volume = musicVolume;
             }
             if (!clearJingle)
             {
                 clearJingle = gameObject.AddComponent<AudioSource>();
-                clearJingle.clip = Resources.Load<AudioClip>("Music/CourseClear"); // plays once on the Course Clear screen
+                clearJingle.clip = Track(controller ? controller.courseClearMusic : null, "CourseClear"); // plays once on the Course Clear screen
                 clearJingle.loop = false; clearJingle.playOnAwake = false; clearJingle.spatialBlend = 0;
             }
             if (!calibrationMusic)
             {
                 calibrationMusic = gameObject.AddComponent<AudioSource>();
-                calibrationMusic.clip = Resources.Load<AudioClip>("Music/StaffRoll"); // plays during the 10-second neutral pose
+                calibrationMusic.clip = Track(controller ? controller.calibrationMusic : null, "StaffRoll"); // plays during the 10-second neutral pose
                 calibrationMusic.loop = false; calibrationMusic.playOnAwake = false; calibrationMusic.spatialBlend = 0;
             }
             // P3's jump: use the scene's Digi Phant Jump if it has one (keeps its Inspector settings), else add it.

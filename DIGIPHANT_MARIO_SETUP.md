@@ -129,20 +129,28 @@ because Unity starts its own copy of the bridge and only one copy can hold the c
    If the elephant is grey or magenta, step 3 or 4 was skipped. Close Unity, redo it, and reopen.
 4. Press **Play**. The title screen reads **DIGIPHANT 64**.
 
-### 7. Optional: music
+### 7. Optional: add your music
 
-The game loads four clips from `Assets/DigiPhant/Resources/Music/` if they exist:
+No music ships with the project, and the game is silent until some is added. Only use tracks the user
+owns or has permission to use.
 
-| File name | Plays |
-| --- | --- |
-| `MainTheme.mp3` | looping during play |
-| `Lullaby.mp3` | while the elephant naps |
-| `CourseClear.mp3` | once on the Course Clear screen |
-| `StaffRoll.mp3` | during the 10-second calibration |
+In Unity, select the object with the **DigiPhant Controller** component in `CatNapClub.unity`. Its
+Inspector has an **Add your music** section:
 
-They are not in the repository. The user may add their own tracks with these names. Without them the
-game is silent and nothing else changes. Never commit music files: `.gitignore` already excludes that
-folder.
+1. Click **Open music folder**. This creates `Assets/DigiPhant/Resources/Music/` if needed and opens it.
+   Copy MP3, WAV or OGG files into it.
+2. Drag each file onto its slot under **Add your music**:
+
+| Slot | Plays | Used when the slot is empty |
+| --- | --- | --- |
+| Main Theme | looping during play | `Music/MainTheme` |
+| Nap Music | while the elephant naps | `Music/Lullaby` |
+| Course Clear Music | once on the Course Clear screen | `Music/CourseClear` |
+| Calibration Music | during the 10-second calibration | `Music/StaffRoll` |
+
+A file in the music folder with the name in the last column is used even without dragging it onto a
+slot. An empty slot with no matching file stays silent; nothing else changes. Never commit music
+files: `.gitignore` excludes the music folder.
 
 ## Playing
 

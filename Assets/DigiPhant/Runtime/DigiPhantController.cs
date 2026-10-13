@@ -57,6 +57,15 @@ namespace DigiPhant
         public bool gameUI = true;
         [Tooltip("Maximum width of the left control panel and its camera preview, in pixels.")]
         [Range(250, 800)] public float panelWidth = 520;
+        [Header("Add your music")]
+        [Tooltip("Loops during play. Empty: Resources/Music/MainTheme, if present.")]
+        public AudioClip mainTheme;
+        [Tooltip("Loops while the elephant naps. Empty: Resources/Music/Lullaby, if present.")]
+        public AudioClip napMusic;
+        [Tooltip("Plays once on the Course Clear screen. Empty: Resources/Music/CourseClear, if present.")]
+        public AudioClip courseClearMusic;
+        [Tooltip("Plays during the 10-second neutral-pose calibration. Empty: Resources/Music/StaffRoll, if present.")]
+        public AudioClip calibrationMusic;
         float PanelWidth => Mathf.Min(panelWidth, Screen.width * .45f);
         public string Status { get; private set; } = "Test sliders ready";
         public int ReceivedFrames { get; private set; }
