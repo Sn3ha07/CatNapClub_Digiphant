@@ -1,8 +1,70 @@
 # DIGIPHANT 64 — set up the CatNap Club elephant project on a new computer
 
+This guide has two parts. **Part 1** is for you: install the programs and open the project in VS
+Code. **Part 2** is for your coding agent (Claude Code, Codex or another agent in VS Code): it builds
+the full Unity project for you.
+
+# Part 1 — for you (about 30 minutes, mostly downloads)
+
+## 1. Download these programs
+
+| Program | What it is for | Download |
+| --- | --- | --- |
+| VS Code | The code editor you work in | [code.visualstudio.com/download](https://code.visualstudio.com/download) |
+| A coding agent for VS Code (pick one) | Reads Part 2 of this guide and does the setup for you | **Claude Code:** [VS Code extension](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code) · [docs](https://docs.claude.com/en/docs/claude-code/overview)<br>**Codex:** [VS Code extension](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt) · [docs](https://developers.openai.com/codex)<br>**GitHub Copilot agent:** [docs](https://code.visualstudio.com/docs/copilot/overview) |
+| Unity Hub + Unity **6000.6.4f1** | Runs the game | [Unity Hub](https://unity.com/download), then the exact editor version from the [Unity download archive](https://unity.com/releases/editor/archive) (Unity 6 tab) |
+| Git | Downloads the project | [git-scm.com/downloads](https://git-scm.com/downloads) (already on most Macs) |
+| Python 3.11 or newer | Runs the camera tracking | [python.org/downloads](https://www.python.org/downloads/) |
+| MediaPipe | Google's body, hand, face and object tracking | Nothing to download yourself: your agent installs it into the project in Part 2. About it: [MediaPipe solutions](https://ai.google.dev/edge/mediapipe/solutions/guide) |
+
+You also need a **webcam** and a **GitHub account** that the project owner has added to the private
+repository.
+
+## 2. Get the project in VS Code
+
+1. Open VS Code. Install your coding agent's extension from the table above (Extensions panel, or the
+   link). Sign in to it when it asks.
+2. Press **Cmd+Shift+P** (Mac) or **Ctrl+Shift+P** (Windows), type **Git: Clone**, and press Enter.
+3. Paste `https://github.com/Sn3ha07/CatNapClub_Digiphant.git` and press Enter. Sign in to GitHub if
+   asked, then choose a folder to save it in (not inside iCloud, OneDrive or Dropbox).
+4. When VS Code asks, click **Open** to open the cloned folder.
+
+## 3. Ask your agent to set it up
+
+Open your agent's panel in VS Code (the Claude Code or Codex icon in the sidebar) and send:
+
+> Read DIGIPHANT_MARIO_SETUP.md in this project and follow Part 2 to set up the whole project on this
+> computer. Ask me when you need me to do something, and tell me at the end what you verified.
+
+The agent downloads the instructor starter, copies the elephant, installs MediaPipe and checks the
+tracking. Approve its commands when it asks. You will need to:
+- allow camera access when your computer asks (Mac: System Settings → Privacy & Security → Camera);
+- open the project in Unity Hub when the agent tells you to (Part 2, step 6).
+
+## 4. Choose how to play
+
+- **1 person: use the keyboard.** No camera is needed. Press Play in Unity, then click **PLAY WITH KEYBOARD**.
+- **3 people: use the camera (computer vision).** Exactly three people stand side by side in front of
+  the webcam, one in each third of the picture. Click **PLAY WITH CAMERA** and hold still for the 10-second
+  calibration. Each person controls a different part of the
+  elephant (see [Playing](#playing)).
+
+**Print these before a camera game:** a colour picture of a **banana** and a colour picture of a
+**water bottle**, each about A4 / Letter size. P3 holds them up to the camera to make the elephant
+eat and drink. A real banana and bottle work too.
+
+## 5. Music (optional)
+
+The game was made with the Super Mario 64 soundtrack, but **that music is copyrighted by Nintendo and
+is not included or linked here**. Your agent will flag this too. The game works silently without
+music. To add music you own or have permission to use, see Part 2, step 7.
+
+# Part 2 — for the coding agent
+
 **For the coding agent reading this:** follow these steps in order to rebuild the complete Unity
 project on this computer, then verify it. The user only needs to grant camera access, open Unity and
-move in front of the webcam for the live test. Report what you verified and what you could not.
+move in front of the webcam for the live test. Report what you verified and what you could not. If
+the user has already cloned this repository in VS Code (Part 1), skip step 1 and work in that folder.
 
 ## What this project is
 
@@ -19,8 +81,9 @@ The project comes from two git repositories plus one folder:
 | Instructor starter: elephant model and animations, Python bridge, pose model | `https://github.com/kommanderpi/studentstarter`, commit `5adcbea1f7b311b8bb15c17b3dc4742ae8fff3af` | `DigiPhantStarter/`, plus a copy of `Elephant/` into `Assets/` |
 | Our changes to starter files: the extended bridge, its tests and extra models, and the pink and calf elephant textures | `Restore/` in this repository | copied over the files above |
 
-The music is **not** included: the game used copyrighted Nintendo tracks that may not be shared. The
-game runs silently without them (see step 7).
+The music is **not** included: the game used copyrighted Nintendo tracks that may not be shared or
+linked. The game runs silently without them (see step 7). If the user asks you to download that
+music, remind them it is copyrighted and only tracks they own or have permission to use may be added.
 
 ## Requirements
 
@@ -154,17 +217,17 @@ files: `.gitignore` excludes the music folder.
 
 ## Playing
 
-- **Keyboard mode** (no camera needed): W/S or ↑/↓ move, A/D or ←/→ turn, Shift runs, hold E to eat, hold Q to drink, Z naps or wakes, Space jumps, Esc pauses.
-- **Camera mode:** three people stand side by side, one per zone. P1 is on the left of the unmirrored preview. Unity starts the bridge automatically and asks everyone to hold a neutral pose for calibration.
+- **Keyboard mode, 1 person** (no camera needed): W/S or ↑/↓ move, A/D or ←/→ turn, Shift runs, hold E to eat, hold Q to drink, Z naps or wakes, Space jumps, Esc pauses.
+- **Camera mode, 3 people:** three people stand side by side, one per zone. P1 is on the left of the unmirrored preview. Unity starts the bridge automatically and asks everyone to hold a neutral pose for calibration.
 
 | Performer | Action | Elephant |
 | --- | --- | --- |
 | P1 (left zone) | raise left hand / right hand | walk forward (higher = run) / back up |
 | P2 (middle zone) | raise right hand / left hand | turn right / turn left (the new direction stays) |
-| P3 (right zone) | show a banana | eat; the calf walks to the feeding bush and eats there |
-| P3 | show a water bottle | drink; the calf drinks at the water basin, waits 5 s, then runs to catch up |
+| P3 (right zone) | show a banana (a printed picture works) | eat; the calf walks to the feeding bush and eats there |
+| P3 | show a water bottle (a printed picture works) | drink; the calf drinks at the water basin, waits 5 s, then runs to catch up |
 | P3 | eyes closed + hands together by the face, or head resting sideways on the hands | nap for at least 5 s; open the eyes to wake |
-| P3 | throw both hands up fast, into the top 30% of the image | jump (over the log) |
+| P3 | throw both hands up fast, near the top of the camera image | jump (over the log) |
 
 Missions: reach the finish, eat a banana, drink some water, take a nap. Coins and best time are shown
 on the HUD. F1 toggles the developer panel.
