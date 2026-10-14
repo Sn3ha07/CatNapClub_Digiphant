@@ -21,7 +21,7 @@ You will need:
 | Python 3.11+ | [python.org/downloads](https://www.python.org/downloads/) |
 | MediaPipe | installed by your agent during setup ([about MediaPipe](https://ai.google.dev/edge/mediapipe/solutions/guide)) |
 
-Plus a webcam, and access to this private repository (ask the owner to add you).
+Plus a webcam.
 
 ## Play
 

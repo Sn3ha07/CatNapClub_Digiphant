@@ -17,16 +17,14 @@ the full Unity project for you.
 | Python 3.11 or newer | Runs the camera tracking | [python.org/downloads](https://www.python.org/downloads/) |
 | MediaPipe | Google's body, hand, face and object tracking | Nothing to download yourself: your agent installs it into the project in Part 2. About it: [MediaPipe solutions](https://ai.google.dev/edge/mediapipe/solutions/guide) |
 
-You also need a **webcam** and a **GitHub account** that the project owner has added to the private
-repository.
+You also need a **webcam**. The repository is public, so no GitHub account is needed to download it.
 
 ## 2. Get the project in VS Code
 
 1. Open VS Code. Install your coding agent's extension from the table above (Extensions panel, or the
    link). Sign in to it when it asks.
 2. Press **Cmd+Shift+P** (Mac) or **Ctrl+Shift+P** (Windows), type **Git: Clone**, and press Enter.
-3. Paste `https://github.com/Sn3ha07/CatNapClub_Digiphant.git` and press Enter. Sign in to GitHub if
-   asked, then choose a folder to save it in (not inside iCloud, OneDrive or Dropbox).
+3. Paste `https://github.com/Sn3ha07/CatNapClub_Digiphant.git` and press Enter, then choose a folder to save it in (not inside iCloud, OneDrive or Dropbox).
 4. When VS Code asks, click **Open** to open the cloned folder.
 
 ## 3. Ask your agent to set it up
@@ -77,7 +75,7 @@ The project comes from two git repositories plus one folder:
 
 | Part | Source | Goes to |
 | --- | --- | --- |
-| This project: scenes, DigiPhant scripts, game UI, low-poly course, hats, bananas | `https://github.com/Sn3ha07/CatNapClub_Digiphant` (private; the owner must add you as a collaborator) | the project root |
+| This project: scenes, DigiPhant scripts, game UI, low-poly course, hats, bananas | `https://github.com/Sn3ha07/CatNapClub_Digiphant` (public) | the project root |
 | Instructor starter: elephant model and animations, Python bridge, pose model | `https://github.com/kommanderpi/studentstarter`, commit `5adcbea1f7b311b8bb15c17b3dc4742ae8fff3af` | `DigiPhantStarter/`, plus a copy of `Elephant/` into `Assets/` |
 | Our changes to starter files: the extended bridge, its tests and extra models, and the pink and calf elephant textures | `Restore/` in this repository | copied over the files above |
 
@@ -89,7 +87,7 @@ music, remind them it is copyrighted and only tracks they own or have permission
 
 - **Unity 6000.6.4f1**, installed through Unity Hub. Use this exact version, because the project was
   made with it. On macOS, the Apple silicon build is fine.
-- **Git**, and access to the private repository above.
+- **Git**.
 - **Python 3.11 or newer** (tested with Python 3.14 on macOS), with `venv`.
 - A **webcam**. On macOS, Unity or the terminal will ask for camera permission.
 - About 2 GB of free disk space (Unity's Library folder grows on first open).
